@@ -11,9 +11,23 @@ dependencies {
 }
 
 test {
+<<<<<<< HEAD
     useJUnitPlatform()
     testLogging {
         events "passed", "skipped", "failed"
         exceptionFormat "full"  // Show full exception details on failure
     }
 }
+=======
+	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+		exceptionFormat "full"  // Show full exception details on failure
+	}
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+>>>>>>> upstream/main
