@@ -43,52 +43,93 @@ public class Player {
         if (isStraightFlush(rankFrequency, suitFrequency)) {
             return "Straight Flush";
         }
-
+        
         // Check for Four of a Kind
-        if (rankFrequency.contains(4)) {
+        boolean hasFourOfAKind = false;
+        for (int count : rankFrequency) {
+            if (count == 4) {
+                hasFourOfAKind = true;
+                break;
+            }
+        }
+        if (hasFourOfAKind) {
             return "Four of a Kind";
         }
-
+        
         // Check for Full House (Three of a Kind + Pair)
-        if (rankFrequency.contains(3) && rankFrequency.contains(2)) {
+        boolean hasThreeOfAKind = false;
+        boolean hasPair = false;
+        for (int count : rankFrequency) {
+            if (count == 3) {
+                hasThreeOfAKind = true;
+            }
+            if (count == 2) {
+                hasPair = true;
+            }
+        }
+        if (hasThreeOfAKind && hasPair) {
             return "Full House";
         }
-
+        
         // Check for Flush (5 cards of the same suit)
-        if (suitFrequency.contains(5)) {
+        boolean hasFlush = false;
+        for (int count : suitFrequency) {
+            if (count == 5) {
+                hasFlush = true;
+                break;
+            }
+        }
+        if (hasFlush) {
             return "Flush";
         }
-
+        
         // Check for Straight (5 consecutive ranks)
         if (isStraight()) {
             return "Straight";
         }
-
+        
         // Check for Three of a Kind
-        if (rankFrequency.contains(3)) {
+        boolean hasThreeOfAKindAgain = false;
+        for (int count : rankFrequency) {
+            if (count == 3) {
+                hasThreeOfAKindAgain = true;
+                break;
+            }
+        }
+        if (hasThreeOfAKindAgain) {
             return "Three of a Kind";
         }
-
+        
         // Check for Two Pair (at least two pairs)
         int pairCount = 0;
         for (int count : rankFrequency) {
-            if (count == 2) pairCount++;
+            if (count == 2) {
+                pairCount++;
+            }
         }
-        if (pairCount >= 2) { // Fix: Check for >= 2 pairs
+        if (pairCount >= 2) {
             return "Two Pair";
         }
-
+        
         // Check for A Pair
-        if (rankFrequency.contains(2)) {
+        boolean hasPairAgain = false;
+        for (int count : rankFrequency) {
+            if (count == 2) {
+                hasPairAgain = true;
+                break;
+            }
+        }
+        if (hasPairAgain) {
             return "A Pair";
         }
-
-       
-        if(highCardOrNothing()){
-             return "High Card";
+        
+        // Check for High Card or Nothing
+        if (highCardOrNothing()) {
+            return "High Card";
         }
-       
+        
         return "Nothing";
+        
     }
 
 

@@ -13,7 +13,7 @@ public class Game {
         } else if (p2Rank > p1Rank) {
             return "Player 2 wins!";
         } else {
-           
+            
 
             return "Tie!";
         }
