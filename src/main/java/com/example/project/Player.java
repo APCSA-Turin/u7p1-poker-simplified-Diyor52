@@ -220,7 +220,7 @@ public class Player {
                     count++;
                 }
             }
-            frequency.add(count);//adds the amount of  each suit to the list 
+            frequency.add(count);//adds the amount of each suit to the list 
         }
         return frequency;
     }
